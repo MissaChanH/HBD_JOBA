@@ -12,23 +12,76 @@ audioBtn.addEventListener('click',()=>{silenciado=!silenciado;historia.muted=sil
 const inicio=$('#inicio'), cuenta=$('#cuentaRegresiva'), numero=$('#numeroCuenta'), recuerdos=$('#recuerdos'), intro=$('#recuerdoIntro'), card=$('#recuerdoCard');
 $('#btnComenzar').addEventListener('click',()=>{if(inicio.dataset.started)return;inicio.dataset.started='1';playHistoria();inicio.style.opacity='0';inicio.style.transform='scale(1.08)';setTimeout(()=>{inicio.classList.remove('activa');cuenta.classList.add('activa');let n=3;function next(){if(n===0){cuenta.classList.remove('activa');recuerdos.classList.add('activa');intro.style.animation='up 1.3s both';setTimeout(()=>{intro.style.opacity='0';setTimeout(()=>{intro.style.display='none';card.classList.add('visible');showMemory()},1100)},2600);return}numero.textContent=n;numero.style.animation='none';void numero.offsetWidth;numero.style.animation='count .9s cubic-bezier(.16,1,.3,1)';n--;setTimeout(next,1000)}next()},900)});
 const memories=[
- ['01 · MUCHO ANTES','assets/fotos/01_infancia_1.jpg','Mucho antes de que pudiéramos imaginarlo...'],
- ['02 · UNA HISTORIA','assets/fotos/02_infancia_2.jpg','ya había una historia que nos unía.'],
- ['03 · VOLVER A ENCONTRARNOS','assets/fotos/03_miradas.jpg','Y con el tiempo, nuestros caminos volvieron a encontrarse.'],
- ['04 · ALGO DIFERENTE','assets/fotos/04_byn_carino.jpg','Hasta que empezamos a escribir una historia diferente.'],
- ['05 · MOMENTOS PEQUEÑOS','assets/fotos/05_beso.jpg','Una historia hecha de momentos pequeños...'],
- ['06 · RISAS','assets/fotos/06_risa.jpg','de risas, ocurrencias y compañía.'],
- ['07 · NUESTRA COMPAÑÍA','assets/fotos/07_perrito_1.jpg','Y de esos momentos que simplemente nos hacen sonreír. 🐶💜'],
- ['08 · MÁS DE NOSOTROS','assets/fotos/08_puerto_2.jpg','Porque contigo hasta lo cotidiano se vuelve especial.'],
- ['09 · LOS DETALLES','assets/fotos/09_reloj.jpg','Y de pequeños detalles que terminan significándolo todo.'],
- ['10 · LUGARES','assets/fotos/10_mar_beso.jpg','Algunos recuerdos se sienten como si el tiempo se detuviera.'],
- ['11 · JUNTOS','assets/fotos/11_mar_selfie_1.jpg','También existen lugares que se vuelven especiales simplemente porque los compartimos.'],
- ['12 · MÁS AVENTURAS','assets/fotos/12_mar_selfie_2.jpg','Ojalá podamos conocer muchos más.'],
- ['13 · LO QUE VIENE','assets/fotos/13_gala.jpg','Y quiero seguir llenando mi vida de momentos así contigo.'],
- ['14 · UNA DE NUESTRAS LOCURAS','assets/fotos/14_easter_egg.jpg','Y sí... también tenemos historias un poquito menos normales. 😂💜']
+ ['01 · VOLVER A ENCONTRARNOS','assets/fotos/03_miradas.jpg','Y con el tiempo, nuestros caminos volvieron a encontrarse.'],
+ ['02 · ALGO DIFERENTE','assets/fotos/04_byn_carino.jpg','Hasta que empezamos a escribir una historia diferente.'],
+ ['03 · MOMENTOS PEQUEÑOS','assets/fotos/05_beso.jpg','Una historia hecha de momentos pequeños...'],
+ ['04 · RISAS','assets/fotos/06_risa.jpg','de risas, ocurrencias y compañía.'],
+ ['05 · NUESTRA COMPAÑÍA','assets/fotos/07_perrito_1.jpg','Y de esos momentos que simplemente nos hacen sonreír. 🐶💜'],
+ ['06 · MÁS DE NOSOTROS','assets/fotos/08_puerto_2.jpg','Porque contigo hasta lo cotidiano se vuelve especial.'],
+ ['07 · LOS DETALLES','assets/fotos/09_reloj.jpg','Y de pequeños detalles que terminan significándolo todo.'],
+ ['08 · LUGARES','assets/fotos/10_mar_beso.jpg','Algunos recuerdos se sienten como si el tiempo se detuviera.'],
+ ['09 · JUNTOS','assets/fotos/11_mar_selfie_1.jpg','También existen lugares que se vuelven especiales simplemente porque los compartimos.'],
+ ['10 · MÁS AVENTURAS','assets/fotos/12_mar_selfie_2.jpg','Ojalá podamos conocer muchos más.'],
+ ['11 · LO QUE VIENE','assets/fotos/13_gala.jpg','Y quiero seguir llenando mi vida de momentos así contigo.'],
+ ['12 · UNA DE NUESTRAS LOCURAS','assets/fotos/14_easter_egg.jpg','Y sí... también tenemos historias un poquito menos normales. 😂💜']
 ];
+
+let memIndex=0;
+let childhoodPhase=0;
+let inChildhood=false;
+
+function showMemory(){
+  const [num,src,txt]=memories[memIndex];
+  $('#recuerdoNumero').textContent=num;
+  $('#recuerdoFrase').textContent=txt;
+  const img=$('#fotoRecuerdo');
+  img.style.animation='none';
+  void img.offsetWidth;
+  img.src=src;
+  img.style.animation='photoIn 1.3s cubic-bezier(.16,1,.3,1)';
+  $('#btnSiguiente').innerHTML=memIndex===memories.length-1?'Seguir con la historia ♡':'Continuar <span>→</span>';
+}
+
+function showChildhood(){
+  inChildhood=true;
+  const childhood=[
+    ['UN PEQUEÑO “¿Y SI...?”','assets/fotos/01_infancia_1.jpg','No es un recuerdo... pero a veces me gusta imaginar cómo habría sido conocerte mucho antes.'],
+    ['SI NOS HUBIÉRAMOS CONOCIDO ANTES','assets/fotos/02_infancia_2.jpg','Quizá nuestra historia habría empezado antes... aunque me gusta mucho la historia que tenemos hoy. 💜']
+  ];
+  const [num,src,txt]=childhood[childhoodPhase];
+  $('#recuerdoNumero').textContent=num;
+  $('#recuerdoFrase').textContent=txt;
+  const img=$('#fotoRecuerdo');
+  img.style.animation='none';
+  void img.offsetWidth;
+  img.src=src;
+  img.style.animation='photoIn 1.3s cubic-bezier(.16,1,.3,1)';
+  $('#btnSiguiente').innerHTML=childhoodPhase===childhood.length-1?'Continuar ♡':'Imaginarlo... <span>→</span>';
+}
+
 let memIndex=0;function showMemory(){const [num,src,txt]=memories[memIndex];$('#recuerdoNumero').textContent=num;$('#recuerdoFrase').textContent=txt;const img=$('#fotoRecuerdo');img.style.animation='none';void img.offsetWidth;img.src=src;img.style.animation='photoIn 1.3s cubic-bezier(.16,1,.3,1)';$('#btnSiguiente').innerHTML=memIndex===memories.length-1?'Seguir con la historia ♡':'Continuar <span>→</span>'}
-$('#btnSiguiente').addEventListener('click',()=>{if(memIndex<memories.length-1){memIndex++;showMemory()}else{recuerdos.classList.remove('activa');$('#carta').classList.add('activa')}});
+$('#btnSiguiente').addEventListener('click',()=>{
+  if(inChildhood){
+    if(childhoodPhase===0){
+      childhoodPhase=1;
+      showChildhood();
+    }else{
+      inChildhood=false;
+      childhoodPhase=0;
+      recuerdos.classList.remove('activa');
+      $('#carta').classList.add('activa');
+    }
+    return;
+  }
+
+  if(memIndex<memories.length-1){
+    memIndex++;
+    showMemory();
+  }else{
+    childhoodPhase=0;
+    showChildhood();
+  }
+});
 $('#btnCarta').addEventListener('click',()=>{$('#cartaIntro').style.display='none';$('#cartaAbierta').classList.add('visible')});
 $('#btnRegalo').addEventListener('click',()=>{$('#carta').classList.remove('activa');$('#regalo').classList.add('activa');setTimeout(()=>{$('#cajaRegalo').classList.add('abierta');setTimeout(()=>{$('#relojRevelado').classList.add('visible');$('#btnFinal').classList.remove('oculto')},1100)},400)});
 $('#btnFinal').addEventListener('click',()=>{fadeOut(historia,3500);$('#regalo').classList.remove('activa');$('#final').classList.add('activa');$('#flash').classList.add('go');setTimeout(()=>{final.currentTime=0;final.play().catch(()=>{});},700)});

@@ -4,52 +4,169 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Para mi Gatito 💜</title>
+    <title>Gatito 💜</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 </head>
 
 <body>
 
+    <!-- =====================================================
+         UNIVERSO DE FONDO
+         Se mantiene durante toda la experiencia
+    ====================================================== -->
+
+    <div class="universo">
+
+        <div class="nebulosa nebulosa-1"></div>
+        <div class="nebulosa nebulosa-2"></div>
+        <div class="nebulosa nebulosa-3"></div>
+
+        <div class="estrellas" id="estrellas"></div>
+
+        <div class="estrella-fugaz fugaz-1"></div>
+        <div class="estrella-fugaz fugaz-2"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+    ====================================================== -->
+
     <main id="app">
 
-        <section id="inicio" class="pantalla activa">
+        <!-- =================================================
+             PANTALLA PRINCIPAL
+        ================================================== -->
 
-            <div class="contenido">
+        <section
+            id="inicio"
+            class="pantalla pantalla-inicio activa"
+        >
 
-                <div class="corazon">
+            <div class="contenido-inicio">
+
+                <!-- Corazón -->
+                <div class="corazon-principal">
                     💜
                 </div>
 
+
+                <!-- Texto superior -->
                 <p class="etiqueta">
                     TENGO ALGO PREPARADO PARA TI...
                 </p>
 
-                <h1>
-                    Para mi
-                    <span>Gatito</span>
+
+                <!-- Nombre -->
+                <h1 class="nombre">
+                    Gatito
                 </h1>
 
-                <p class="descripcion">
-                    Hoy no quiero simplemente decirte
-                    "feliz cumpleaños".
-                    <br><br>
-                    Quiero que descubras algo que preparé
-                    especialmente para ti.
-                </p>
 
-                <button id="btnComenzar">
-                    Comenzar ✨
+                <!-- Decoración -->
+                <div class="decoracion">
+
+                    <span></span>
+
+                    <span class="patita">
+                        🐾
+                    </span>
+
+                    <span></span>
+
+                </div>
+
+
+                <!-- Mensaje -->
+                <div class="mensaje-inicio">
+
+                    <p>
+                        Hoy no quiero simplemente decirte
+                    </p>
+
+                    <p class="frase-destacada">
+                        "feliz cumpleaños".
+                    </p>
+
+                    <p>
+                        Quiero que descubras algo que preparé
+                        <br>
+                        especialmente para ti.
+                    </p>
+
+                </div>
+
+
+                <!-- Botón -->
+                <button
+                    id="btnComenzar"
+                    class="boton-principal"
+                >
+                    Comenzar
+                    <span>✨</span>
                 </button>
 
+
+                <!-- Indicador inferior -->
+                <div class="indicador">
+
+                    <div class="flecha">
+                        ↓
+                    </div>
+
+                    <p>
+                        DESLIZA PARA COMENZAR
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Gatito decorativo -->
+            <div class="gatito-silueta">
+                🐈‍⬛
+            </div>
+
+
+            <!-- Corazones decorativos -->
+            <div class="corazon-decorativo corazon-1">
+                ♡
+            </div>
+
+            <div class="corazon-decorativo corazon-2">
+                ♡
+            </div>
+
+
+            <!-- Texto decorativo -->
+            <div class="texto-decorativo texto-1">
+                Feliz<br>
+                cumpleaños
+                ♡
+            </div>
+
+            <div class="texto-decorativo texto-2">
+                Que vengan<br>
+                más momentos<br>
+                así...
+                ♡
             </div>
 
         </section>
 
     </main>
+
 
     <script src="js/script.js"></script>
 

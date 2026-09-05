@@ -1007,3 +1007,445 @@ body {
             28%;
     }
 }
+/* =====================================================
+   ANIMACIÓN CINEMATOGRÁFICA DE ENTRADA
+===================================================== */
+
+.universo {
+    animation: universoRespira 14s ease-in-out infinite alternate;
+}
+
+@keyframes universoRespira {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.06);
+    }
+}
+
+
+/* -----------------------------------------
+   Estado inicial de los elementos
+----------------------------------------- */
+
+.pantalla-inicio .corazon-principal,
+.pantalla-inicio .etiqueta,
+.pantalla-inicio .nombre,
+.pantalla-inicio .decoracion,
+.pantalla-inicio .mensaje-inicio,
+.pantalla-inicio .boton-principal,
+.pantalla-inicio .indicador,
+.pantalla-inicio .gatito-silueta,
+.pantalla-inicio .corazon-decorativo,
+.pantalla-inicio .texto-decorativo {
+    opacity: 0;
+}
+
+
+/* -----------------------------------------
+   Corazón
+----------------------------------------- */
+
+.pantalla-inicio .corazon-principal {
+    animation:
+        aparecerCorazon 1.8s cubic-bezier(.16,1,.3,1) forwards,
+        latido 2.5s 1.8s infinite ease-in-out;
+}
+
+@keyframes aparecerCorazon {
+
+    0% {
+        opacity: 0;
+        transform: scale(.15) translateY(30px);
+        filter:
+            blur(20px)
+            drop-shadow(0 0 0 rgba(175,90,255,0));
+    }
+
+    55% {
+        opacity: 1;
+        transform: scale(1.18) translateY(-5px);
+        filter:
+            blur(0)
+            drop-shadow(0 0 45px rgba(175,90,255,.9));
+    }
+
+    75% {
+        transform: scale(.94);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter:
+            blur(0)
+            drop-shadow(0 0 25px rgba(175,90,255,.65));
+    }
+}
+
+
+/* -----------------------------------------
+   Texto superior
+----------------------------------------- */
+
+.pantalla-inicio .etiqueta {
+    animation:
+        aparecerArriba .9s .8s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes aparecerArriba {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+        filter: blur(8px);
+        letter-spacing: 14px;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+        letter-spacing: 7px;
+    }
+}
+
+
+/* -----------------------------------------
+   GATITO
+----------------------------------------- */
+
+.pantalla-inicio .nombre {
+    animation:
+        aparecerNombre 1.5s 1.1s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes aparecerNombre {
+
+    0% {
+        opacity: 0;
+        transform:
+            scale(.55)
+            translateY(30px);
+        filter:
+            blur(18px)
+            drop-shadow(0 0 0 rgba(160,80,255,0));
+    }
+
+    45% {
+        opacity: .65;
+    }
+
+    75% {
+        transform:
+            scale(1.07)
+            translateY(-3px);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            scale(1)
+            translateY(0);
+        filter:
+            blur(0)
+            drop-shadow(0 0 25px rgba(160,80,255,.35));
+    }
+}
+
+
+/* -----------------------------------------
+   Decoración / patita
+----------------------------------------- */
+
+.pantalla-inicio .decoracion {
+    animation:
+        aparecerDecoracion 1s 1.9s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes aparecerDecoracion {
+
+    0% {
+        opacity: 0;
+        transform: scaleX(.1);
+        filter: blur(8px);
+    }
+
+    70% {
+        transform: scaleX(1.12);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+        filter: blur(0);
+    }
+}
+
+
+/* -----------------------------------------
+   Mensaje
+----------------------------------------- */
+
+.pantalla-inicio .mensaje-inicio {
+    animation:
+        aparecerMensaje 1.2s 2.2s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes aparecerMensaje {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+
+/* -----------------------------------------
+   Botón
+----------------------------------------- */
+
+.pantalla-inicio .boton-principal {
+    animation:
+        aparecerBoton 1.1s 3s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes aparecerBoton {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(30px)
+            scale(.75);
+        filter: blur(8px);
+    }
+
+    65% {
+        transform:
+            translateY(-5px)
+            scale(1.06);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter: blur(0);
+    }
+}
+
+
+/* -----------------------------------------
+   Indicador
+----------------------------------------- */
+
+.pantalla-inicio .indicador {
+    animation:
+        aparecerIndicador 1s 3.8s ease forwards;
+}
+
+@keyframes aparecerIndicador {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: .7;
+        transform: translateY(0);
+    }
+}
+
+
+/* -----------------------------------------
+   Decoraciones laterales
+----------------------------------------- */
+
+.pantalla-inicio .gatito-silueta {
+    animation:
+        aparecerLateral 1.8s 2.4s ease forwards;
+}
+
+.pantalla-inicio .corazon-1 {
+    animation:
+        aparecerLateral 1.3s 2.7s ease forwards;
+}
+
+.pantalla-inicio .corazon-2 {
+    animation:
+        aparecerLateral 1.3s 3s ease forwards;
+}
+
+.pantalla-inicio .texto-1 {
+    animation:
+        aparecerLateral 1.2s 2.5s ease forwards;
+}
+
+.pantalla-inicio .texto-2 {
+    animation:
+        aparecerLateral 1.2s 3.2s ease forwards;
+}
+
+@keyframes aparecerLateral {
+
+    from {
+        opacity: 0;
+        transform:
+            scale(.6)
+            translateY(25px);
+        filter: blur(10px);
+    }
+
+    to {
+        opacity: .7;
+        transform:
+            scale(1)
+            translateY(0);
+        filter: blur(0);
+    }
+}
+
+
+/* =====================================================
+   PARTÍCULAS DE LUZ
+===================================================== */
+
+.particula-luz {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+
+    box-shadow:
+        0 0 6px rgba(255,255,255,.9),
+        0 0 14px rgba(180,100,255,.8);
+
+    animation:
+        flotarParticula var(--duracion)
+        var(--delay)
+        ease-in-out infinite;
+}
+
+@keyframes flotarParticula {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate3d(0,30px,0)
+            scale(.3);
+    }
+
+    20% {
+        opacity: .8;
+    }
+
+    50% {
+        transform:
+            translate3d(var(--movimiento),-80px,0)
+            scale(1);
+    }
+
+    80% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate3d(calc(var(--movimiento) * -1),-150px,0)
+            scale(.2);
+    }
+}
+
+
+/* =====================================================
+   BRILLO SUTIL SOBRE GATITO
+===================================================== */
+
+.nombre {
+    position: relative;
+}
+
+.nombre::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: -15px;
+    height: 25px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(166,90,255,.45),
+            transparent 70%
+        );
+
+    filter: blur(15px);
+    opacity: .7;
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   MEJORA DEL BOTÓN
+===================================================== */
+
+.boton-principal {
+    position: relative;
+    overflow: hidden;
+}
+
+.boton-principal::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    animation:
+        brilloBoton 4s 4.5s infinite;
+}
+
+@keyframes brilloBoton {
+
+    0% {
+        left: -120%;
+    }
+
+    30% {
+        left: 150%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}

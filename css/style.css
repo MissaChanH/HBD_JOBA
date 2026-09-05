@@ -1,3 +1,7 @@
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,190 +9,1001 @@
 }
 
 :root {
-    --negro: #050507;
-    --morado: #9b5cff;
-    --morado-claro: #c9a7ff;
-    --verde: #55d68a;
-    --blanco: #ffffff;
+
+    --negro: #030307;
+
+    --morado:
+        #9c4dff;
+
+    --morado-claro:
+        #cda7ff;
+
+    --morado-brillante:
+        #e2caff;
+
+    --verde:
+        #6edca0;
+
+    --blanco:
+        #ffffff;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
+
+    width: 100%;
     min-height: 100vh;
-    background: var(--negro);
-    color: var(--blanco);
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-}
-
-.pantalla {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    position: relative;
 
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(155, 92, 255, 0.18),
-            transparent 30%
-        ),
+        #030307;
 
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(85, 214, 138, 0.10),
-            transparent 30%
-        ),
+    color:
+        var(--blanco);
 
-        #050507;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x:
+        hidden;
 }
 
-.contenido {
-    width: min(700px, 90%);
 
-    text-align: center;
+/* =========================================================
+   UNIVERSO
+========================================================= */
 
-    position: relative;
-    z-index: 2;
+.universo {
 
-    animation: aparecer 1.5s ease;
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        -10;
+
+    overflow:
+        hidden;
+
+    background:
+
+        radial-gradient(
+            ellipse at 10% 20%,
+            rgba(96, 34, 180, .38),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            ellipse at 90% 25%,
+            rgba(75, 30, 150, .30),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            ellipse at 20% 90%,
+            rgba(45, 100, 100, .15),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            ellipse at 85% 85%,
+            rgba(75, 25, 150, .32),
+            transparent 40%
+        ),
+
+        #030307;
+}
+
+
+/* =========================================================
+   NEBULOSAS
+========================================================= */
+
+.nebulosa {
+
+    position:
+        absolute;
+
+    border-radius:
+        50%;
+
+    filter:
+        blur(70px);
+
+    pointer-events:
+        none;
+}
+
+.nebulosa-1 {
+
+    width:
+        600px;
+
+    height:
+        350px;
+
+    left:
+        -250px;
+
+    top:
+        10%;
+
+    background:
+        rgba(111, 42, 210, .22);
+
+    transform:
+        rotate(-25deg);
+}
+
+.nebulosa-2 {
+
+    width:
+        600px;
+
+    height:
+        400px;
+
+    right:
+        -280px;
+
+    bottom:
+        5%;
+
+    background:
+        rgba(113, 42, 220, .20);
+
+    transform:
+        rotate(30deg);
+}
+
+.nebulosa-3 {
+
+    width:
+        400px;
+
+    height:
+        250px;
+
+    left:
+        30%;
+
+    bottom:
+        -180px;
+
+    background:
+        rgba(50, 130, 90, .10);
+}
+
+
+/* =========================================================
+   ESTRELLAS
+========================================================= */
+
+.estrellas {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+}
+
+.estrella {
+
+    position:
+        absolute;
+
+    width:
+        2px;
+
+    height:
+        2px;
+
+    border-radius:
+        50%;
+
+    background:
+        white;
+
+    opacity:
+        .65;
+
+    animation:
+        parpadear 3s infinite ease-in-out;
+}
+
+@keyframes parpadear {
+
+    0%,
+    100% {
+
+        opacity:
+            .15;
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1.8);
+    }
+}
+
+
+/* =========================================================
+   ESTRELLAS FUGACES
+========================================================= */
+
+.estrella-fugaz {
+
+    position:
+        absolute;
+
+    width:
+        2px;
+
+    height:
+        90px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255,255,255,.9),
+            transparent
+        );
+
+    opacity:
+        .7;
+
+    transform:
+        rotate(45deg);
+
+    animation:
+        caer 6s linear infinite;
+}
+
+.fugaz-1 {
+
+    top:
+        -100px;
+
+    left:
+        18%;
+
+    animation-delay:
+        2s;
+}
+
+.fugaz-2 {
+
+    top:
+        -100px;
+
+    right:
+        22%;
+
+    animation-delay:
+        4s;
+}
+
+@keyframes caer {
+
+    0% {
+
+        transform:
+            translate(0,0)
+            rotate(45deg);
+
+        opacity:
+            0;
+    }
+
+    10% {
+
+        opacity:
+            .8;
+    }
+
+    30% {
+
+        transform:
+            translate(250px,250px)
+            rotate(45deg);
+
+        opacity:
+            0;
+    }
+
+    100% {
+
+        opacity:
+            0;
+    }
+}
+
+
+/* =========================================================
+   PANTALLA
+========================================================= */
+
+.pantalla {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    min-height:
+        100vh;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    overflow:
+        hidden;
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+========================================================= */
+
+.contenido-inicio {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    width:
+        min(850px, 90%);
+
+    text-align:
+        center;
+
+    padding:
+        50px 20px;
+
+    animation:
+        aparecer 1.8s ease;
 }
 
 @keyframes aparecer {
 
     from {
-        opacity: 0;
-        transform: translateY(30px);
+
+        opacity:
+            0;
+
+        transform:
+            translateY(25px);
     }
 
     to {
-        opacity: 1;
-        transform: translateY(0);
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
     }
 }
 
-.corazon {
-    font-size: 65px;
-    margin-bottom: 25px;
 
-    animation: latido 1.8s infinite;
+/* =========================================================
+   CORAZÓN
+========================================================= */
+
+.corazon-principal {
+
+    font-size:
+        clamp(55px, 7vw, 90px);
+
+    margin-bottom:
+        35px;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(175, 90, 255, .65)
+        );
+
+    animation:
+        latido 2s infinite ease-in-out;
 }
 
 @keyframes latido {
 
-    0%, 100% {
-        transform: scale(1);
+    0%,
+    100% {
+
+        transform:
+            scale(1);
     }
 
     15% {
-        transform: scale(1.18);
+
+        transform:
+            scale(1.12);
     }
 
     30% {
-        transform: scale(1);
+
+        transform:
+            scale(1);
+    }
+
+    45% {
+
+        transform:
+            scale(1.06);
     }
 }
 
+
+/* =========================================================
+   ETIQUETA
+========================================================= */
+
 .etiqueta {
-    font-size: 11px;
 
-    letter-spacing: 5px;
+    font-size:
+        clamp(9px, 1.2vw, 13px);
 
-    color: var(--morado-claro);
+    letter-spacing:
+        7px;
 
-    margin-bottom: 25px;
+    color:
+        var(--morado-claro);
+
+    margin-bottom:
+        30px;
+
+    font-weight:
+        400;
 }
 
-h1 {
-    font-family: Georgia, serif;
 
-    font-size: clamp(55px, 10vw, 100px);
+/* =========================================================
+   GATITO
+========================================================= */
 
-    font-weight: normal;
+.nombre {
 
-    line-height: 1;
-}
+    font-family:
+        Georgia,
+        'Times New Roman',
+        serif;
 
-h1 span {
-    display: block;
+    font-size:
+        clamp(80px, 13vw, 155px);
 
-    color: var(--morado-claro);
+    font-weight:
+        normal;
+
+    line-height:
+        .9;
+
+    color:
+        var(--morado-claro);
 
     text-shadow:
-        0 0 30px rgba(155, 92, 255, 0.35);
+
+        0 0 12px
+        rgba(190, 130, 255, .55),
+
+        0 0 40px
+        rgba(130, 60, 255, .25);
 }
 
-.descripcion {
-    max-width: 550px;
 
-    margin: 35px auto 0;
+/* =========================================================
+   DECORACIÓN
+========================================================= */
 
-    color: #cfcfd3;
+.decoracion {
 
-    font-size: 16px;
+    display:
+        flex;
 
-    line-height: 1.7;
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        18px;
+
+    margin:
+        28px auto 35px;
 }
 
-button {
-    margin-top: 40px;
+.decoracion span:not(.patita) {
 
-    padding: 16px 38px;
+    width:
+        80px;
 
-    border: none;
+    height:
+        1px;
 
-    border-radius: 50px;
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            var(--morado)
+        );
+}
+
+.decoracion span:last-child {
+
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            var(--morado)
+        );
+}
+
+.patita {
+
+    font-size:
+        25px;
+
+    filter:
+        grayscale(1)
+        brightness(2)
+        sepia(1)
+        hue-rotate(230deg)
+        saturate(5);
+}
+
+
+/* =========================================================
+   MENSAJE
+========================================================= */
+
+.mensaje-inicio {
+
+    font-size:
+        clamp(15px, 2vw, 21px);
+
+    line-height:
+        1.7;
+
+    color:
+        #e0e0e4;
+}
+
+.mensaje-inicio p {
+
+    margin:
+        8px 0;
+}
+
+.frase-destacada {
+
+    color:
+        #f0edf5;
+
+    font-size:
+        1.08em;
+}
+
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+.boton-principal {
+
+    margin-top:
+        40px;
+
+    min-width:
+        250px;
+
+    padding:
+        19px 40px;
+
+    border:
+        none;
+
+    border-radius:
+        60px;
 
     background:
         linear-gradient(
             135deg,
-            var(--morado),
-            #6d38d4
+            #b263ff,
+            #7233df
         );
 
-    color: white;
+    color:
+        white;
 
-    font-size: 15px;
+    font-size:
+        18px;
 
-    font-weight: bold;
+    font-weight:
+        600;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
     box-shadow:
-        0 0 30px
-        rgba(155, 92, 255, 0.25);
 
-    transition: 0.3s;
+        0 0 20px
+        rgba(145, 65, 255, .35),
+
+        0 0 55px
+        rgba(115, 45, 210, .15);
+
+    transition:
+        .35s ease;
 }
 
-button:hover {
+.boton-principal span {
+
+    display:
+        inline-block;
+
+    margin-left:
+        6px;
+
+    transition:
+        .35s;
+}
+
+.boton-principal:hover {
+
     transform:
-        translateY(-4px)
+        translateY(-5px)
         scale(1.04);
 
     box-shadow:
-        0 0 45px
-        rgba(155, 92, 255, 0.5);
+
+        0 0 30px
+        rgba(170, 90, 255, .65),
+
+        0 0 70px
+        rgba(115, 45, 210, .25);
 }
 
-@media (max-width: 600px) {
+.boton-principal:hover span {
 
-    .corazon {
-        font-size: 50px;
+    transform:
+        rotate(15deg)
+        scale(1.2);
+}
+
+
+/* =========================================================
+   INDICADOR
+========================================================= */
+
+.indicador {
+
+    margin-top:
+        65px;
+
+    opacity:
+        .7;
+}
+
+.indicador p {
+
+    margin-top:
+        8px;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        5px;
+
+    color:
+        var(--morado-claro);
+}
+
+.flecha {
+
+    color:
+        var(--morado-claro);
+
+    font-size:
+        27px;
+
+    animation:
+        bajar 1.8s infinite;
+}
+
+@keyframes bajar {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+        opacity:
+            .5;
+    }
+
+    50% {
+
+        transform:
+            translateY(8px);
+
+        opacity:
+            1;
+    }
+}
+
+
+/* =========================================================
+   GATITO DECORATIVO
+========================================================= */
+
+.gatito-silueta {
+
+    position:
+        absolute;
+
+    left:
+        4%;
+
+    bottom:
+        -10px;
+
+    font-size:
+        clamp(70px, 10vw, 150px);
+
+    opacity:
+        .16;
+
+    filter:
+        grayscale(1);
+
+    z-index:
+        1;
+
+    transform:
+        scaleX(-1);
+}
+
+
+/* =========================================================
+   CORAZONES DECORATIVOS
+========================================================= */
+
+.corazon-decorativo {
+
+    position:
+        absolute;
+
+    color:
+        var(--morado);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        65px;
+
+    opacity:
+        .7;
+
+    z-index:
+        2;
+}
+
+.corazon-1 {
+
+    left:
+        18%;
+
+    bottom:
+        14%;
+}
+
+.corazon-2 {
+
+    right:
+        28%;
+
+    top:
+        35%;
+}
+
+
+/* =========================================================
+   TEXTOS DECORATIVOS
+========================================================= */
+
+.texto-decorativo {
+
+    position:
+        absolute;
+
+    color:
+        rgba(203, 164, 255, .65);
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-style:
+        italic;
+
+    line-height:
+        1.3;
+
+    z-index:
+        2;
+}
+
+.texto-1 {
+
+    right:
+        6%;
+
+    top:
+        7%;
+
+    transform:
+        rotate(-10deg);
+
+    font-size:
+        clamp(18px, 2vw, 30px);
+}
+
+.texto-2 {
+
+    right:
+        4%;
+
+    bottom:
+        8%;
+
+    font-size:
+        clamp(13px, 1.5vw, 21px);
+
+    transform:
+        rotate(-7deg);
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .contenido-inicio {
+
+        padding:
+            35px 10px;
     }
 
     .etiqueta {
-        font-size: 9px;
-        letter-spacing: 3px;
+
+        letter-spacing:
+            4px;
+
+        margin-bottom:
+            25px;
     }
 
-    .descripcion {
-        font-size: 14px;
+    .nombre {
+
+        font-size:
+            clamp(75px, 23vw, 120px);
     }
 
-    button {
-        padding: 15px 32px;
+    .decoracion {
+
+        margin:
+            20px auto 28px;
+    }
+
+    .decoracion span:not(.patita) {
+
+        width:
+            45px;
+    }
+
+    .mensaje-inicio {
+
+        font-size:
+            15px;
+    }
+
+    .boton-principal {
+
+        min-width:
+            220px;
+
+        padding:
+            17px 30px;
+
+        font-size:
+            16px;
+    }
+
+    .indicador {
+
+        margin-top:
+            45px;
+    }
+
+    .gatito-silueta {
+
+        left:
+            -15px;
+
+        bottom:
+            -5px;
+
+        opacity:
+            .12;
+    }
+
+    .texto-1 {
+
+        right:
+            5px;
+
+        top:
+            5%;
+    }
+
+    .texto-2 {
+
+        display:
+            none;
+    }
+
+    .corazon-1 {
+
+        left:
+            10%;
+
+        bottom:
+            18%;
+    }
+
+    .corazon-2 {
+
+        right:
+            8%;
+
+        top:
+            28%;
     }
 }

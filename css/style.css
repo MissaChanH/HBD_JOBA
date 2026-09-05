@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --negro: #050507;
+    --morado: #9b5cff;
+    --morado-claro: #c9a7ff;
+    --verde: #55d68a;
+    --blanco: #ffffff;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.pantalla {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(155, 92, 255, 0.18),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(85, 214, 138, 0.10),
+            transparent 30%
+        ),
+
+        #050507;
+}
+
+.contenido {
+    width: min(700px, 90%);
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+
+    animation: aparecer 1.5s ease;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.corazon {
+    font-size: 65px;
+    margin-bottom: 25px;
+
+    animation: latido 1.8s infinite;
+}
+
+@keyframes latido {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.18);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+}
+
+.etiqueta {
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: var(--morado-claro);
+
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+
+    font-size: clamp(55px, 10vw, 100px);
+
+    font-weight: normal;
+
+    line-height: 1;
+}
+
+h1 span {
+    display: block;
+
+    color: var(--morado-claro);
+
+    text-shadow:
+        0 0 30px rgba(155, 92, 255, 0.35);
+}
+
+.descripcion {
+    max-width: 550px;
+
+    margin: 35px auto 0;
+
+    color: #cfcfd3;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+button {
+    margin-top: 40px;
+
+    padding: 16px 38px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--morado),
+            #6d38d4
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 30px
+        rgba(155, 92, 255, 0.25);
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform:
+        translateY(-4px)
+        scale(1.04);
+
+    box-shadow:
+        0 0 45px
+        rgba(155, 92, 255, 0.5);
+}
+
+@media (max-width: 600px) {
+
+    .corazon {
+        font-size: 50px;
+    }
+
+    .etiqueta {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .descripcion {
+        font-size: 14px;
+    }
+
+    button {
+        padding: 15px 32px;
+    }
+}

@@ -114,30 +114,27 @@ $('#btnComenzar').addEventListener('click', () => {
   }, 900);
 });
 
-/* RECUERDOS REALES */
+/* RECUERDOS */
+// Las dos primeras imágenes son la pequeña introducción que imaginamos juntos.
+// Después continúan los recuerdos reales de nuestra historia.
 const memories = [
-  ['01 · VOLVER A ENCONTRARNOS', 'assets/fotos/03_miradas.jpg', 'Y con el tiempo, nuestros caminos volvieron a encontrarse.'],
-  ['02 · ALGO DIFERENTE', 'assets/fotos/04_byn_carino.jpg', 'Hasta que empezamos a escribir una historia diferente.'],
-  ['03 · MOMENTOS PEQUEÑOS', 'assets/fotos/05_beso.jpg', 'Una historia hecha de momentos pequeños...'],
-  ['04 · RISAS', 'assets/fotos/06_risa.jpg', 'De risas, ocurrencias y compañía.'],
-  ['05 · NUESTRA COMPAÑÍA', 'assets/fotos/07_perrito_1.jpg', 'Y de esos momentos que simplemente nos hacen sonreír. 🐶💜'],
-  ['06 · MÁS DE NOSOTROS', 'assets/fotos/08_puerto_2.jpg', 'Porque contigo hasta lo cotidiano se vuelve especial.'],
-  ['07 · LOS DETALLES', 'assets/fotos/09_reloj.jpg', 'Y de pequeños detalles que terminan significándolo todo.'],
-  ['08 · LUGARES', 'assets/fotos/10_mar_beso.jpg', 'Algunos recuerdos se sienten como si el tiempo se detuviera.'],
-  ['09 · JUNTOS', 'assets/fotos/11_mar_selfie_1.jpg', 'También existen lugares que se vuelven especiales simplemente porque los compartimos.'],
-  ['10 · MÁS AVENTURAS', 'assets/fotos/12_mar_selfie_2.jpg', 'Ojalá podamos conocer muchos más.'],
-  ['11 · LO QUE VIENE', 'assets/fotos/13_gala.jpg', 'Y quiero seguir llenando mi vida de momentos así contigo.'],
-  ['12 · UNA DE NUESTRAS LOCURAS', 'assets/fotos/14_easter_egg.jpg', 'Y sí... también tenemos historias un poquito menos normales. 😂💜']
-];
-
-const childhood = [
-  ['UN PEQUEÑO “¿Y SI...?”', 'assets/fotos/01_infancia_1.jpg', 'No es un recuerdo... pero a veces me gusta imaginar cómo habría sido conocerte mucho antes.'],
-  ['SI NOS HUBIÉRAMOS CONOCIDO ANTES', 'assets/fotos/02_infancia_2.jpg', 'Quizá nuestra historia habría empezado antes... aunque me gusta mucho la historia que tenemos hoy. 💜']
+  ['01 · EL COMIENZO', 'assets/fotos/01_infancia_1.jpg', 'Así comenzó algo que ninguno de los dos imaginaba.'],
+  ['02 · NUESTROS CAMINOS', 'assets/fotos/02_infancia_2.jpg', 'Y con el tiempo, nuestros caminos se encontraron.'],
+  ['03 · NUESTRA HISTORIA', 'assets/fotos/03_miradas.jpg', 'Y poco a poco empezamos a escribir nuestra propia historia.'],
+  ['04 · ALGO DIFERENTE', 'assets/fotos/04_byn_carino.jpg', 'Hasta que empezamos a descubrir lo bonito de estar juntos.'],
+  ['05 · MOMENTOS PEQUEÑOS', 'assets/fotos/05_beso.jpg', 'Una historia hecha también de momentos pequeños...'],
+  ['06 · RISAS', 'assets/fotos/06_risa.jpg', 'De risas, ocurrencias y compañía.'],
+  ['07 · NUESTRA COMPAÑÍA', 'assets/fotos/07_perrito_1.jpg', 'Y de esos momentos que simplemente nos hacen sonreír. 🐶💜'],
+  ['08 · MÁS DE NOSOTROS', 'assets/fotos/08_puerto_2.jpg', 'Porque contigo hasta lo cotidiano se vuelve especial.'],
+  ['09 · LOS DETALLES', 'assets/fotos/09_reloj.jpg', 'Y de pequeños detalles que terminan significándolo todo.'],
+  ['10 · LUGARES', 'assets/fotos/10_mar_beso.jpg', 'Algunos recuerdos se sienten como si el tiempo se detuviera.'],
+  ['11 · JUNTOS', 'assets/fotos/11_mar_selfie_1.jpg', 'También existen lugares que se vuelven especiales simplemente porque los compartimos.'],
+  ['12 · MÁS AVENTURAS', 'assets/fotos/12_mar_selfie_2.jpg', 'Ojalá podamos conocer muchos más.'],
+  ['13 · LO QUE VIENE', 'assets/fotos/13_gala.jpg', 'Y quiero seguir llenando mi vida de momentos así contigo.'],
+  ['14 · UNA DE NUESTRAS LOCURAS', 'assets/fotos/14_easter_egg.jpg', 'Y sí... también tenemos historias un poquito menos normales. 😂💜']
 ];
 
 let memIndex = 0;
-let childhoodPhase = 0;
-let inChildhood = false;
 
 function paintMemory(item) {
   const [num, src, txt] = item;
@@ -158,33 +155,13 @@ function showMemory() {
   paintMemory(memories[memIndex]);
 }
 
-function showChildhood() {
-  inChildhood = true;
-  paintMemory(childhood[childhoodPhase]);
-  $('#btnSiguiente').innerHTML = childhoodPhase === childhood.length - 1
-    ? 'Continuar con nuestra historia ♡'
-    : 'Imaginarlo... <span>→</span>';
-}
-
 $('#btnSiguiente').addEventListener('click', () => {
-  if (inChildhood) {
-    if (childhoodPhase === 0) {
-      childhoodPhase = 1;
-      showChildhood();
-    } else {
-      inChildhood = false;
-      childhoodPhase = 0;
-      recuerdos.classList.remove('activa');
-      $('#carta').classList.add('activa');
-    }
-    return;
-  }
-
   if (memIndex < memories.length - 1) {
     memIndex++;
     showMemory();
   } else {
-    showChildhood();
+    recuerdos.classList.remove('activa');
+    $('#carta').classList.add('activa');
   }
 });
 

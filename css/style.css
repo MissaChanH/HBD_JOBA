@@ -1449,3 +1449,156 @@ body {
         left: 150%;
     }
 }
+/* =====================================================
+   QUITAR INDICADOR "DESLIZA PARA COMENZAR"
+===================================================== */
+
+.indicador {
+    display: none !important;
+}
+
+
+/* =====================================================
+   CUENTA REGRESIVA
+===================================================== */
+
+.cuenta-regresiva {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(3, 3, 7, .15);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .5s ease;
+}
+
+.cuenta-regresiva.activa {
+    opacity: 1;
+}
+
+
+.numero-cuenta {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(130px, 25vw, 300px);
+
+    color: #d5b5ff;
+
+    text-shadow:
+        0 0 15px rgba(190, 120, 255, .9),
+        0 0 40px rgba(155, 70, 255, .8),
+        0 0 100px rgba(120, 40, 255, .5);
+
+    animation: aparecerNumero .9s cubic-bezier(.16, 1, .3, 1);
+}
+
+
+@keyframes aparecerNumero {
+
+    0% {
+        opacity: 0;
+        transform: scale(2.5);
+        filter: blur(25px);
+    }
+
+    45% {
+        opacity: 1;
+        transform: scale(.9);
+        filter: blur(0);
+    }
+
+    70% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.7);
+        filter: blur(8px);
+    }
+}
+
+
+/* =====================================================
+   MENSAJE DESPUÉS DE LA CUENTA
+===================================================== */
+
+.mensaje-cumpleanos {
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: scale(.7);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.4s cubic-bezier(.16, 1, .3, 1);
+}
+
+.mensaje-cumpleanos.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.mensaje-cumpleanos h2 {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(45px, 8vw, 100px);
+
+    font-weight: normal;
+
+    color: #d7b8ff;
+
+    text-shadow:
+        0 0 15px rgba(190, 120, 255, .9),
+        0 0 45px rgba(140, 60, 255, .7),
+        0 0 100px rgba(120, 40, 255, .4);
+}
+
+
+.mensaje-cumpleanos .corazon-final {
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: clamp(35px, 5vw, 60px);
+
+    animation: latidoFinal 1.8s infinite;
+}
+
+
+@keyframes latidoFinal {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.18);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.08);
+    }
+}

@@ -75,31 +75,169 @@ for (let i = 0; i < 25; i++) {
 
 
 /* =====================================================
+   CREAR CUENTA REGRESIVA
+===================================================== */
+
+const cuenta =
+    document.createElement("div");
+
+cuenta.className =
+    "cuenta-regresiva";
+
+cuenta.innerHTML = `
+    <div class="numero-cuenta"></div>
+`;
+
+document.body.appendChild(cuenta);
+
+
+/* =====================================================
+   MENSAJE DE CUMPLEAÑOS
+===================================================== */
+
+const mensajeCumpleanos =
+    document.createElement("div");
+
+mensajeCumpleanos.className =
+    "mensaje-cumpleanos";
+
+mensajeCumpleanos.innerHTML = `
+    <div>
+        <h2>
+            Feliz cumpleaños,<br>
+            Gatito 💜
+        </h2>
+
+        <span class="corazon-final">
+            ♡
+        </span>
+    </div>
+`;
+
+document.body.appendChild(mensajeCumpleanos);
+
+
+/* =====================================================
    BOTÓN COMENZAR
 ===================================================== */
 
 const botonComenzar =
     document.getElementById("btnComenzar");
 
+
+let comenzando = false;
+
+
 botonComenzar.addEventListener(
     "click",
     () => {
 
-        botonComenzar.innerHTML =
-            "Preparando la sorpresa... 💜";
+        if (comenzando) return;
+
+        comenzando = true;
 
         botonComenzar.style.pointerEvents =
             "none";
 
-        botonComenzar.style.transform =
-            "scale(.96)";
+
+        /* -----------------------------------------
+           Ocultar pantalla inicial
+        ----------------------------------------- */
+
+        const pantallaInicio =
+            document.getElementById("inicio");
+
+        pantallaInicio.style.transition =
+            "opacity 1s ease, transform 1.2s ease";
+
+        pantallaInicio.style.opacity = "0";
+
+        pantallaInicio.style.transform =
+            "scale(1.08)";
+
+
+        /* -----------------------------------------
+           Esperar a que desaparezca
+        ----------------------------------------- */
 
         setTimeout(() => {
 
-            alert(
-                "Aquí comenzará nuestra historia 💜"
-            );
+            iniciarCuentaRegresiva();
 
-        }, 1200);
+        }, 900);
+
     }
 );
+
+
+/* =====================================================
+   FUNCIÓN CUENTA REGRESIVA
+===================================================== */
+
+function iniciarCuentaRegresiva() {
+
+    cuenta.classList.add("activa");
+
+    const numero =
+        cuenta.querySelector(".numero-cuenta");
+
+    const numeros = ["3", "2", "1"];
+
+    let posicion = 0;
+
+
+    function mostrarNumero() {
+
+        if (posicion >= numeros.length) {
+
+            terminarCuenta();
+
+            return;
+        }
+
+
+        numero.textContent =
+            numeros[posicion];
+
+
+        /* Reiniciar animación */
+
+        numero.style.animation = "none";
+
+        void numero.offsetWidth;
+
+        numero.style.animation =
+            "aparecerNumero .9s cubic-bezier(.16,1,.3,1)";
+
+
+        posicion++;
+
+
+        setTimeout(
+            mostrarNumero,
+            1000
+        );
+    }
+
+
+    mostrarNumero();
+}
+
+
+/* =====================================================
+   TERMINAR CUENTA
+===================================================== */
+
+function terminarCuenta() {
+
+    cuenta.classList.remove("activa");
+
+
+    setTimeout(() => {
+
+        mensajeCumpleanos.classList.add(
+            "visible"
+        );
+
+    }, 400);
+}
